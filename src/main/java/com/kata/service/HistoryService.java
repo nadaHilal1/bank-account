@@ -10,11 +10,20 @@ import java.util.List;
 
 
 public class HistoryService {
-
+    /**
+     * @param accountToDepositOn
+     * @param operationType
+     * @param amount
+     */
     public void historize(Account accountToDepositOn, OperationType operationType, double amount) {
         accountToDepositOn.getHistory().add(new AccountOperation(operationType, amount));
     }
 
+    /**
+     * @param account
+     * @return
+     * @throws NoHistoryException
+     */
     public AccountOperation getLastOperation(Account account) throws NoHistoryException {
         final List<AccountOperation> history = account.getHistory();
         if (history.isEmpty()) {
@@ -23,6 +32,9 @@ public class HistoryService {
         return history.get(history.size() - 1);
     }
 
+    /**
+     * @param account
+     */
     public void getHistory(Account account) {
         final List<AccountOperation> history = account.getHistory();
         if (history.isEmpty()) {

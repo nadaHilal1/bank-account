@@ -12,6 +12,11 @@ import static com.kata.BankAccountManager.getScanner;
 
 public class WithdrawalService {
 
+    /**
+     *
+     * @param accountToWithdrawFrom
+     * @throws UnsufficientBalanceException
+     */
     public void withdraw(Account accountToWithdrawFrom) throws UnsufficientBalanceException {
         System.out.println(Messages.FILL_AMOUNT.getMessage());
         String amount = getScanner().nextLine();
@@ -24,6 +29,12 @@ public class WithdrawalService {
         getHistoryService().historize(accountToWithdrawFrom, OperationType.WITHDRAWAL, amountAsDouble);
     }
 
+    /**
+     *
+     * @param accountToWithdrawFrom
+     * @throws UnsufficientBalanceException
+     * @throws NoHistoryException
+     */
     public void withdrawWithTicket(Account accountToWithdrawFrom) throws UnsufficientBalanceException, NoHistoryException {
         withdraw(accountToWithdrawFrom);
         System.out.println(getHistoryService().getLastOperation(accountToWithdrawFrom).toString());

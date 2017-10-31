@@ -9,7 +9,10 @@ import static com.kata.BankAccountManager.getHistoryService;
 import static com.kata.BankAccountManager.getScanner;
 
 public class DepositService {
-
+    /**
+     *
+     * @param accountToDepositOn
+     */
     public void deposit(Account accountToDepositOn) {
         System.out.println(Messages.FILL_AMOUNT.getMessage());
         String amount = getScanner().nextLine();
@@ -19,7 +22,12 @@ public class DepositService {
         getHistoryService().historize(accountToDepositOn, OperationType.DEPOSIT, amountAsDouble);
     }
 
-
+    /**
+     *
+     * @param accountToDepositOn
+     * @return
+     * @throws NoHistoryException
+     */
     public String depositWithTicket(Account accountToDepositOn) throws NoHistoryException {
         deposit(accountToDepositOn);
         return getHistoryService().getLastOperation(accountToDepositOn).toString();

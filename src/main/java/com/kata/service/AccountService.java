@@ -20,6 +20,12 @@ public class AccountService {
         accounts.add(new Account("04", 40.0, "tutu"));
     }
 
+    /**
+     *
+     * @param accountNumber
+     * @return
+     * @throws AccountNotFoundException
+     */
     public Account getAccount(final String accountNumber) throws AccountNotFoundException {
         Account foundAccount = accounts.stream().filter(account -> account.getAccountNumber().equals(accountNumber)).findAny()                                      // If 'findAny' then return found
                 .orElse(null);

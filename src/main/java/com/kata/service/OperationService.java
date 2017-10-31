@@ -29,11 +29,18 @@ public class OperationService {
         }
     }
 
+    /**
+     * @param message
+     * @return
+     */
     private String printMessageAndReturnNextLine(String message) {
         System.out.println(message);
         return getScanner().nextLine();
     }
 
+    /**
+     * @param account
+     */
     private void computeChoiceAndDoOperation(Account account) {
         while (true) {
             String userChoice = printMessageAndReturnNextLine(Messages.OPERATION_CHOICES.getMessage());
@@ -55,6 +62,10 @@ public class OperationService {
         }
     }
 
+    /**
+     * @param choice
+     * @return
+     */
     private Operation getChoiceFromUserInput(String choice) {
         return Operation.fromNumber(choice);
     }
